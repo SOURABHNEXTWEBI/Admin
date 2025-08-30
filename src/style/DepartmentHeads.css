@@ -1,0 +1,102 @@
+/* General Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f8fa;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Admin Dashboard */
+.department-heads-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  color: #1E3A8A; /* Dark Blue */
+  margin-bottom: 20px;
+}
+
+/* Department Heads Table */
+.department-heads-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.department-heads-table th,
+.department-heads-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.department-heads-table th {
+  background-color: #1E3A8A;
+  color: white;
+}
+
+.department-heads-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.department-heads-table td {
+  color: #555;
+}
+
+/* Action Button in Table */
+.btn-report {
+  padding: 8px 15px;
+  border-radius: 4px;
+  background-color: #10B981;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-report:hover {
+  background-color: #059669;
+}
+
+/* Email Link Styling */
+.email-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Space between logo and content below */
+}
+
+/* Logo Image */
+.logo {
+  width: 120px; /* Set width for logo */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Ensure logo scales down on smaller screens */
+  object-fit: contain; /* Ensure logo is fully contained within the set dimensions */
+}

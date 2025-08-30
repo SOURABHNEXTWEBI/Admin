@@ -1,0 +1,91 @@
+/* General Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f8fa;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Device Assignment Dashboard */
+.device-assignment-dashboard {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Header Styling */
+h2 {
+  font-size: 28px;
+  color: #1E3A8A;
+  margin-bottom: 20px;
+}
+
+/* Device Assignment Table */
+.device-assignment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.device-assignment-table th,
+.device-assignment-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.device-assignment-table th {
+  background-color: #1E3A8A;
+  color: white;
+}
+
+.device-assignment-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.device-assignment-table td {
+  color: #555;
+}
+
+/* Status Column Styles */
+.status {
+  text-transform: capitalize;
+}
+
+.status.active {
+  color: #10B981; /* Green */
+}
+
+.status.inactive {
+  color: #F59E0B; /* Yellow */
+}
+
+.status.pending {
+  color: #EF4444; /* Red */
+}
+
+/* Mobile Responsive Table */
+@media (max-width: 768px) {
+  .device-assignment-table th, .device-assignment-table td {
+    padding: 8px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
