@@ -8,6 +8,8 @@ import First from './components/First';
 import AdminDashboard from './components/AdminDashboard';
 import AddDepartmentHead from './components/AddDepartmentHead';
 import DepartmentHeads from './components/DepartmenthHeads';
+import DeptheadDashboard from './components/DeptheadDashboard';
+import DeviceAssignedDashboard from './components/DeviceAssigned';
 
 function App() {
   return (
@@ -34,9 +36,12 @@ function App() {
         <Route path="/department-heads" element={<DepartmentHeads />} />
         <Route path="/add-department-head" element={<AddDepartmentHead />} />
 
-         <Route path="/dept-headlogin" element={<DeptLogin/>} />
-         <Route path="/dept-form" element={<DeptForm/>} />
 
+  <Route path="/dept-headlogin" element={<DeptLogin/>} />
+
+    <Route path="/head-dashboard" element={<DeptheadDashboard />} />
+         <Route path="/dept-form" element={<DeptForm/>} />
+     <Route path="/device-assigned" element={<DeviceAssignedDashboard/>} />
         
       </Routes>
     </Router>

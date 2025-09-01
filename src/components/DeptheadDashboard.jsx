@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function AdminDashboard() {
   const navigate = useNavigate();
     const handleClick = (msg) => {
-      msg=='Adddepthead'?navigate('/add-department-head'):navigate('/department-heads'); 
+      msg=='deptform'?navigate('/dept-form'):navigate('/Device-assigned'); 
   };
 
   return (
@@ -196,7 +196,7 @@ export default function AdminDashboard() {
       {/* Main Content */}
       <div className="portal-container">
         <div className="welcome-card">
-          <h1 className="welcome-title">Welcome to Admin Panel</h1>
+          <h1 className="welcome-title">Welcome to dept Head  Panel</h1>
           <h2 className="welcome-subtitle">NextWebi Portal</h2>
 
           <div className="logo-container">
@@ -208,18 +208,18 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          <p className="login-mode-text">Admin Controls</p>
+          <p className="login-mode-text">Dept head  Controls</p>
 
           <div className="buttons-container">
-            <button className="button" onClick={() => handleClick('Adddepthead')}>
-              Add Department Head
+            <button className="button" onClick={() => handleClick('deptform')}>
+              Assign Project
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.1 3.89 23 5 23H11V21H5V3H13V9H21ZM20.31 16.9C20.69 16.9 21 17.2 21 17.6V18.4C21 18.8 20.69 19.1 20.31 19.1C19.93 19.1 19.6 18.8 19.6 18.4V17.6C19.6 17.2 19.93 16.9 20.31 16.9ZM22.74 20.3C22.74 20.7 22.41 21 22 21S21.26 20.7 21.26 20.3V19.7C21.26 19.3 21.59 19 22 19S22.74 19.3 22.74 19.7V20.3ZM19 16H21V14H19V16Z" />
               </svg>
             </button>
 
-            <button className="button" onClick={() => handleClick('viewdepthead')}>
-              View Department Heads
+            <button className="button" onClick={() => handleClick('deviceassigned')}>
+              View assigned Project
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
               </svg>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../style/AddDepartmentHead.css'; // Ensure the CSS file path matches correctly
+import { useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
+import '../style/AddDepartmentHead.css';
 
 export default function AddDepartmentHead() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export default function AddDepartmentHead() {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // ✅ Initialize navigate
 
   const departments = ['Monitor', 'CPU', 'Phone', 'Mouse'];
 
@@ -56,7 +58,10 @@ export default function AddDepartmentHead() {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
       alert('Department Head account created successfully.');
-      // Reset form if needed
+
+      // ✅ Redirect back to admin dashboard
+      navigate('/admin-dashboard');
+
     } else {
       setErrors(validationErrors);
     }

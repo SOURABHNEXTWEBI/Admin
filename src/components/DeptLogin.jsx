@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
 
 const DeptLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // ✅ Initialize navigate
+
+  const handleLogin = (e) => {
+    e.preventDefault(); // Prevents page reload
+
+    // ✅ (Optional: Add validation or authentication logic here)
+
+    // Navigate to Head Dashboard
+    navigate("/head-dashboard");
+  };
 
   return (
     <>
       <div className="glitch-form-wrapper">
-        <form className="glitch-card">
+        <form className="glitch-card" onSubmit={handleLogin}>
           {/* Header */}
           <div className="card-header">
             <div className="card-title">
