@@ -1,8 +1,13 @@
 import React from 'react'
 import '../style/First.css'
-
+import { useNavigate } from 'react-router-dom';
 
 export default function First() {
+  const navigate = useNavigate();
+    const handleClick = (msg) => {
+      msg=='admin'?navigate('/adminlogin'):navigate('/dept-headlogin'); 
+  };
+
   return (
     <div>
  <div className="portal-container">
@@ -19,7 +24,7 @@ export default function First() {
           <p className="login-mode-text">Select Your Login Mode</p>
           
           <div className="buttons-container">
-            <button className="button">
+            <button className="button" onClick={() => handleClick('admin')}>
               Admin Login
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
@@ -30,7 +35,7 @@ export default function First() {
               </svg>
             </button>
             
-            <button className="button">
+            <button className="button"onClick={() => handleClick('dept-login')}>
               Department Head Login
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
