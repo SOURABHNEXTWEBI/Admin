@@ -1,55 +1,55 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
-import '../style/AddDepartmentHead.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../style/AddDepartmentHead.css";
 
 export default function AddDepartmentHead() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    city: '',
-    password: '',
-    confirmPassword: '',
-    department: '',
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    password: "",
+    confirmPassword: "",
+    department: "",
   });
 
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate();
 
-  const departments = ['Monitor', 'CPU', 'Phone', 'Mouse'];
+  const departments = ["Monitor", "CPU", "Phone", "Mouse"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Invalid email format";
 
-    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
-    else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, '')))
-      newErrors.phone = 'Phone must be 10 digits';
+    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
+    else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, "")))
+      newErrors.phone = "Phone must be 10 digits";
 
-    if (!formData.city.trim()) newErrors.city = 'City is required';
+    if (!formData.city.trim()) newErrors.city = "City is required";
 
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.password) newErrors.password = "Password is required";
     else if (formData.password.length < 6)
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Minimum 6 characters required";
 
     if (!formData.confirmPassword)
-      newErrors.confirmPassword = 'Please confirm password';
+      newErrors.confirmPassword = "Please confirm password";
     else if (formData.password !== formData.confirmPassword)
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = "Passwords do not match";
 
-    if (!formData.department) newErrors.department = 'Select a department';
+    if (!formData.department) newErrors.department = "Select a department";
 
     return newErrors;
   };
@@ -57,11 +57,8 @@ export default function AddDepartmentHead() {
   const handleAdd = () => {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      alert('Department Head account created successfully.');
-
-      // ✅ Redirect back to admin dashboard
-      navigate('/admin-dashboard');
-
+      alert("✅ Department Head account created successfully.");
+      navigate("/admin-dashboard");
     } else {
       setErrors(validationErrors);
     }
@@ -69,57 +66,69 @@ export default function AddDepartmentHead() {
 
   return (
     <div className="add-dept-container">
-      <div className="form-container">
-        <h1>Add Department Head</h1>
+      <div className="form-card">
+        <h1 className="form-title">Add Department Head</h1>
+        <p className="form-subtitle">
+          Fill in the details below to create a department head account.
+        </p>
 
+        {/* Name */}
         <div className="form-group">
           <label>Name</label>
           <input
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            className={errors.name ? 'error' : ''}
+            className={errors.name ? "input error" : "input"}
             placeholder="Enter full name"
           />
           {errors.name && <small className="error-text">{errors.name}</small>}
         </div>
 
+        {/* Email */}
         <div className="form-group">
           <label>Email</label>
           <input
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={errors.email ? 'error' : ''}
+            className={errors.email ? "input error" : "input"}
             placeholder="Enter email"
           />
-          {errors.email && <small className="error-text">{errors.email}</small>}
+          {errors.email && (
+            <small className="error-text">{errors.email}</small>
+          )}
         </div>
 
+        {/* Phone */}
         <div className="form-group">
           <label>Phone</label>
           <input
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className={errors.phone ? 'error' : ''}
-            placeholder="Enter phone"
+            className={errors.phone ? "input error" : "input"}
+            placeholder="Enter phone number"
           />
-          {errors.phone && <small className="error-text">{errors.phone}</small>}
+          {errors.phone && (
+            <small className="error-text">{errors.phone}</small>
+          )}
         </div>
 
+        {/* City */}
         <div className="form-group">
           <label>City</label>
           <input
             name="city"
             value={formData.city}
             onChange={handleInputChange}
-            className={errors.city ? 'error' : ''}
+            className={errors.city ? "input error" : "input"}
             placeholder="Enter city"
           />
           {errors.city && <small className="error-text">{errors.city}</small>}
         </div>
 
+        {/* Password */}
         <div className="form-group">
           <label>Password</label>
           <input
@@ -127,7 +136,7 @@ export default function AddDepartmentHead() {
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            className={errors.password ? 'error' : ''}
+            className={errors.password ? "input error" : "input"}
             placeholder="Enter password"
           />
           {errors.password && (
@@ -135,6 +144,7 @@ export default function AddDepartmentHead() {
           )}
         </div>
 
+        {/* Confirm Password */}
         <div className="form-group">
           <label>Confirm Password</label>
           <input
@@ -142,21 +152,22 @@ export default function AddDepartmentHead() {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleInputChange}
-            className={errors.confirmPassword ? 'error' : ''}
-            placeholder="Confirm password"
+            className={errors.confirmPassword ? "input error" : "input"}
+            placeholder="Re-enter password"
           />
           {errors.confirmPassword && (
             <small className="error-text">{errors.confirmPassword}</small>
           )}
         </div>
 
+        {/* Department */}
         <div className="form-group">
           <label>Department</label>
           <select
             name="department"
             value={formData.department}
             onChange={handleInputChange}
-            className={errors.department ? 'error' : ''}
+            className={errors.department ? "input error" : "input"}
           >
             <option value="">Select Department</option>
             {departments.map((dept) => (
@@ -170,6 +181,7 @@ export default function AddDepartmentHead() {
           )}
         </div>
 
+        {/* Submit */}
         <div className="button-group">
           <button onClick={handleAdd} className="btn btn-primary">
             Add as Head

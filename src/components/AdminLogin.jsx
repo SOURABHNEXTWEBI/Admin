@@ -1,65 +1,83 @@
-import React from 'react'
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useState  } from 'react';
+import  { useEffect } from "react";
+import { FiArrowRight } from 'react-icons/fi';
+import '../style/Adminlogin.css';
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/Logo.webp';
 
 const AdminLogin = () => {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
+    // Redirect to Dash booard when user is alredy logined
+    useEffect(() => {
+      if (sessionStorage.getItem("adminEmail")) {
+        navigate("/admin-dashboard");
+      }
+    }, [navigate]);
+
+  // State for email, password, and error message
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
 
-    // ✅ (Optional: Add your login validation logic here)
-
-    // Navigate to admin dashboard
-    navigate("/admin-dashboard");
+    // Check login credentials
+    if (email === 'Adminnextwebi@gmail.com' && password === 'Admin@nextwebi') {
+      setError('');
+      sessionStorage.setItem('adminEmail', email);
+      navigate('/admin-dashboard');
+    } else {
+      setError('Invalid email or password. Please try again.');
+    }
   };
 
   return (
-    <>
-      <Container className="d-flex justify-content-center align-items-center min-vh-100">
-        <Row>
-          <Col>
-            <Card className="p-4 shadow rounded" style={{ maxWidth: "350px" }}>
-              <Card.Body>
-                {/* Title */}
-                <h4 className="text-center mb-4 fw-semibold">Admin Login</h4>
+    <div className="admin-login-container">
+      <div className="admin-login-card">
+        {/* Logo */}
+        <div className="logo-circle">
+          <img src={logo} alt="NextWebi Logo" />
+        </div>
 
-                {/* Form */}
-                <Form onSubmit={handleSubmit}>
-                  {/* Email */}
-                  <Form.Group className="mb-3" controlId="formEmail">
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter email"
-                      required
-                    />
-                  </Form.Group>
+        {/* Headings */}
+        <h2 className="login-title">Welcome to</h2>
+        <h3 className="portal-title">NextWebi Portal</h3>
+        <p className="subheading">Admin Login System</p>
 
-                  {/* Password */}
-                  <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Control
-                      type="password"
-                      placeholder="Enter password"
-                      required
-                    />
-                  </Form.Group>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            className="input-field"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            className="input-field"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-                  {/* Submit Button */}
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    className="w-100 text-uppercase"
-                  >
-                    Login
-                  </Button>
-                </Form>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </>
-  )
-}
+          <button type="submit" className="login-button">
+            Login <FiArrowRight />
+          </button>
+        </form>
 
-export default AdminLogin
+        {/* Error Message */}
+        {error && <p className="error-message">{error}</p>}
+
+        <p className="support-text">Need help accessing your account?</p>
+        <a href="mailto:support@nextwebi.com" className="email-link">
+          support@nextwebi.com
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default AdminLogin;
