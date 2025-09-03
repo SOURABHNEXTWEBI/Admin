@@ -65,7 +65,7 @@ const AssignedDevices = () => {
       {/* Title + Table Section */}
       <div className="assigned-devices-container">
           <h1 className="main-title">NextWebi Work Flow</h1>
-        <h3 className="title">Assigned Devices List</h3>
+        <h3 className="title">Assigned Project List</h3>
         
         <table className="assigned-devices-table">
           <thead>
